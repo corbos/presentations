@@ -1,0 +1,58 @@
+===INTRO
+1. Title slide
+2. Who am I?
+3. Why I started thinking about SVG? (games!)
+4. A one slide introduction to SVG
+5. Vector
+6. Scalable
+===VERSUS
+7. Problem statement
+8. Options: Flash, Silverlight, Java, Unity, <canvas>, SVG
+9. Eliminate anything that requires an install. (They also require their own
+toolsets and licenses.)
+10. <canvas> versus SVG (sumo wrestling image?)
+11. Raster/bitmap versus vector
+12. Vector scales well, great for primitives
+13. Not so great for photo quality graphics
+14. SVG objects are members of the DOM
+15. Scriptable
+16. Style-able with CSS
+17. SVG is a W3C Recommendation. <canvas> is a Candidate Recommendation.
+18. Disadvantages
+19. Full spec. support is spotty. (full, tiny, mobile; eased by libraries)
+20. Slows down as objects are added to DOM. (not a <canvas> limitation)
+===SPEC
+21. So what can SVG do?
+22. Coordinate system
+23. Lines
+24. Stroke
+25. Circles
+26. Fill
+27. Rectangle
+28. Text
+29. Image (do you really need it?)
+30. Path - the magic primitive
+31. Maybe another Path example
+32. *Transforms - SVG get powerful*
+33. Translate
+34. Rotate
+35. Scale
+36. *Make your life easier*
+37. Groups
+38. <use>
+39. *Advanced visual behaviors*
+40. Gradients and Patterns
+41. Masking and Clipping
+42. Filter
+43. Animations! (animated)
+44. SMIL (we lost IE)
+===SNAP.SVG
+45. We're programmers, right? Let's program.
+46. Options: Raphaël, D3, Processing.js, Snap.svg...
+47. Why Snap.svg?: it's an abstraction over SVG, nothing more.
+    The others are "value add".
+48. Dynamically add objects
+49. Remove?
+50. Group and drag.
+51. Animate?
+52. Putting it all together.

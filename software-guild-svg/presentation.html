@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Software Guild - SVG in 30 Minutes or Less</title>
+<link href="css/theme.css" rel="stylesheet" /> 
+<link href="css/prettify.css" rel="stylesheet" />
+</head>
+<body>
+<div id="impress">
+    <div id="start" class="step slide">
+        <h1>SVG in 30 Minutes or Less</h1>
+    </div>
+    <div id="whoami" class="step slide" data-x="1000" data-z="-1000" data-rotate-y="45">
+        <h2>Who am I?</h2>
+    </div>
+    <div id="whysvg" class="step slide" data-x="2000" data-z="-2000" data-rotate-y="90">
+        <img src="svg/openweb.svg" width="1000">
+    </div>
+    <div id="oneslidesvg" class="step slide" data-x="1000" data-z="-3000" data-rotate-y="135">
+        <h3>Scalable Vector Graphics</h3>
+        <pre class="prettyprint lang-xml" id="svgCircle">
+        </pre>
+        <hr />
+        <object data="svg/circle.svg" type="image/svg+xml" style="height:200px;">
+            <embed src="svg/circle.svg" type="image/svg+xml"/>
+        </object>
+    </div>
+    <div id="graphics" class="step slide" data-z="-4000" data-rotate-y="180">
+        <h3>Graphics</h3>
+        <img src="svg/tiger.svg" width="250">
+        <img src="svg/machine.svg" width="500"> 
+        <img src="svg/emilystrange.svg" width="200"> 
+    </div>
+    <div id="vector" class="step slide" data-x="-1000" data-z="-3000" data-rotate-y="225">
+        <img src="images/marilyn.png">
+    </div>
+    <div id="scalable" class="step slide" data-x="-2000" data-z="-2000" data-rotate-y="270">
+         <h3>Scalable</h3>
+        <iframe src="svg/scale.html" width="1000" height="500"></iframe> 
+    </div>
+    <div id="sumo" class="step slide" data-x="-1000" data-z="-1000" data-rotate-y="315">
+         <img src="images/sumo.jpg">
+    </div>
+    <div id="dom" class="step slide" data-y="-1000">
+        <h3>Elements are first-class members of the DOM.</h3>
+        <img src="svg/dom.svg">
+    </div>
+    <div id="styleable" class="step slide" data-x="1000" data-y="-1000" data-z="-1000" data-rotate-y="45">
+        <h3>So they can be individually styled using CSS.</h3>
+        <iframe src="svg/styleable.html" width="1000" height="300"></iframe> 
+    </div>
+    <div id="bjork" class="step slide" data-x="2000" data-y="-1000" data-z="-2000" data-rotate-y="90">
+        <h3>Not so great at photo-quality images</h3>
+        <img src="images/bjork.jpg">
+    </div>
+    <div id="scriptable" class="step slide" data-x="1000" data-y="-1000" data-z="-3000" data-rotate-y="135">
+         <h3>They're scriptable!</h3>
+        <iframe src="svg/scriptable.html" width="1000" height="300"></iframe> 
+    </div>
+    <div id="w3c" class="step slide" data-z="-4000" data-y="-1000" data-rotate-y="180">
+        <h3>Standards</h3>
+        <ul>
+            <li>SVG is a W3C Recommendation.</li>
+            <li>Google started indexing SVG content in 2010.</li>
+            <li>Supported by the most recent versions of all major browsers.</li>
+        </ul>
+    </div>
+    <div id="disadvantages" class="step slide" data-x="-1000" data-y="-1000" data-z="-3000" data-rotate-y="225">
+        <h3>Caution</h3>
+        <ul>
+            <li>Full support is incomplete -- full, tiny, and mobile profiles. (This is eased by some SVG libraries.)</li>
+            <li>Rendering slows down as objects are added to the DOM.</li>
+        </ul>
+    </div>
+    <div id="so" class="step slide" data-x="-2000" data-y="-1000" data-z="-2000" data-rotate-y="270">
+        <h1>So What Can SVG Do?</h1>
+    </div>
+    <div id="coordinate" class="step slide" data-x="-1000" data-y="-1000" data-z="-1000" data-rotate-y="315">
+        <h3>The coordinate system</h3>
+        <img src="images/coordinate.png" border="0" style="border-radius:0px;border:none;box-shadow:none;">
+    </div>
+    <div id="lines" class="step slide" data-y="1000">
+        <h3>Lines</h3>
+        <pre class="prettyprint lang-xml" id="svgLines">
+        </pre>
+        <hr />
+        <object data="svg/lines.svg" type="image/svg+xml" >
+            <embed src="svg/lines.svg" type="image/svg+xml"/>
+        </object>
+    </div>
+    <div id="ellipse" class="step slide" data-x="1000" data-y="1000" data-z="-1000" data-rotate-y="45">
+        <h3>Ellipses</h3>
+        <pre class="prettyprint lang-xml" id="svgEllipse">
+        </pre>
+        <hr />
+        <object data="svg/ellipse.svg" type="image/svg+xml" style="height:175px;">
+            <embed src="svg/ellipse.svg" type="image/svg+xml"/>
+        </object>
+    </div>
+    <div id="rects" class="step slide" data-x="2000" data-y="1000" data-z="-2000" data-rotate-y="90">
+        <h3>Rectangles</h3>
+        <pre class="prettyprint lang-xml" id="svgRects">
+        </pre>
+        <hr />
+        <object data="svg/rectangles.svg" type="image/svg+xml" style="height:175px;">
+            <embed src="svg/rectangles.svg" type="image/svg+xml"/>
+        </object>
+    </div>
+    <div id="imageAndText" class="step slide" data-x="1000" data-y="1000" data-z="-3000" data-rotate-y="135">
+        <h3>Text and image</h3>
+        <pre class="prettyprint lang-xml" id="svgImgText">
+        </pre>
+        <hr />
+        <object data="svg/imageandtext.svg" type="image/svg+xml" style="height:175px;">
+            <embed src="svg/imageandtext.svg" type="image/svg+xml"/>
+        </object>
+    </div>
+    <div id="minnesota" class="step slide" data-z="-4000" data-y="1000" data-rotate-y="180">
+        <h3>Path, the magic primitive</h3>
+        <pre class="prettyprint lang-xml overflow" id="svgMN">
+        </pre>
+        <hr />
+        <object data="svg/minnesota.svg" type="image/svg+xml">
+            <embed src="svg/minnesota.svg" type="image/svg+xml"/>
+        </object>
+    </div>
+    <div id="curves" class="step slide" data-x="-1000" data-y="1000" data-z="-3000" data-rotate-y="225">
+        <h3>Bézier curves</h3>
+        <pre class="prettyprint lang-xml" id="svgCurve">
+        </pre>
+        <hr />
+        <object data="svg/curve.svg" type="image/svg+xml">
+            <embed src="svg/curve.svg" type="image/svg+xml"/>
+        </object> 
+    </div>
+    <div id="transforms" class="step slide" data-x="-2000" data-y="1000" data-z="-2000" data-rotate-y="270">
+        <h1>Transforms</h1>
+    </div>
+    <div id="translate" class="step slide" data-x="-1000" data-y="1000" data-z="-1000" data-rotate-y="315">
+        <h3>Translate</h3>
+        <pre class="prettyprint lang-xml" id="svgTranslate">
+        </pre>
+        <hr />
+        <object data="svg/translate.svg" type="image/svg+xml">
+            <embed src="svg/translate.svg" type="image/svg+xml"/>
+        </object> 
+    </div>
+    <div id="rotate" class="step slide" data-y="-2000">
+        <h3>Rotate</h3>
+        <pre class="prettyprint lang-xml overflow" id="svgRotate">
+        </pre>
+        <hr />
+        <object data="svg/rotate.svg" type="image/svg+xml">
+            <embed src="svg/rotate.svg" type="image/svg+xml"/>
+        </object> 
+    </div>
+    <div id="scale" class="step slide" data-x="1000" data-y="-2000" data-z="-1000" data-rotate-y="45">
+        <h3>Scale</h3>
+        <pre class="prettyprint lang-xml overflow" id="svgScale">
+        </pre>
+        <hr />
+        <object data="svg/scale.svg" type="image/svg+xml" style="height:275px;">
+            <embed src="svg/scale.svg" type="image/svg+xml"/>
+        </object> 
+    </div>
+    <div id="group" class="step slide" data-x="2000" data-y="-2000" data-z="-2000" data-rotate-y="90">
+        <h3>Group (don't repeat yourself)</h3>
+        <pre class="prettyprint lang-xml overflow" id="svgGroup">
+        </pre>
+        <hr />
+        <object data="svg/group.svg" type="image/svg+xml" style="height:225px;">
+            <embed src="svg/group.svg" type="image/svg+xml"/>
+        </object> 
+    </div>
+    <div id="programmers" class="step slide" data-x="1000" data-y="-2000" data-z="-3000" data-rotate-y="135">
+        <div>
+            <h1>We're Programmers, Right?</h1>
+        </div>
+    </div>
+    <div id="letsprogram" class="step slide" data-z="-4000" data-y="-2000" data-rotate-y="180">
+        <h3>Let's program</h3>
+        <ul style="float:left;width:500px;">
+            <li>Raphaël</li>
+            <li>Snap.svg</li>
+            <li>D3.js</li>
+        </ul>
+        <ul>
+            <li>Processing.js</li>
+            <li>svg.js</li>
+            <li>Bonsai</li>
+        </ul>
+        <div style="clear:both;">&nbsp;</div>
+    </div>
+    <div id="drag" class="step slide" data-x="-1000" data-y="-2000" data-z="-3000" data-rotate-y="225">
+        <h3>Group and Drag</h3>
+         <iframe src="svg/drag.html" width="1000" height="500" style="border:1px solid #000;"></iframe>
+    </div>
+    <div id="existing" class="step slide" data-x="-2000" data-y="-2000" data-z="-2000" data-rotate-y="270">
+        <h3>Existing SVG</h3>
+        <iframe src="svg/existing.html" width="1000" height="500" style="border:1px solid #000;"></iframe>
+    </div>
+    <div id="d3" class="step slide" data-x="-1000" data-y="-2000" data-z="-1000" data-rotate-y="315">
+         <h3>d3</h3>
+        <iframe src="svg/d3.html" width="1000" height="500" style="border:1px solid #000;"></iframe>
+    </div>
+    <div id="alltogether" class="step slide" data-y="2000">
+        <h1>Spare Time Projects</h1>
+    </div>
+    <div id="timestable" class="step slide" data-x="1000" data-y="2000" data-z="-1000" data-rotate-y="45">
+        <h3>Times Tables</h3>
+        <iframe src="svg/timestable.html" width="1000" height="675"></iframe>
+    </div>
+    <div id="states" class="step slide" data-x="2000" data-y="2000" data-z="-2000" data-rotate-y="90">
+        <h3>States and Capitals</h3> 
+        <iframe src="states.html" width="1000" height="675" style="background-color:#fff;"></iframe>
+    </div>
+    <div id="circlewars" class="step slide" data-x="1000" data-y="2000" data-z="-3000" data-rotate-y="135">
+        <h3>Circle Wars</h3>
+        <iframe src="svg/circlewars.html" width="1000" height="675" style="background-color:#fff;"></iframe>
+    </div>
+    <div id="thatsit" class="step slide" data-z="-4000" data-y="2000" data-rotate-y="180">
+        <ul>
+        <li><a href="http://www.w3.org/Graphics/SVG/">http://www.w3.org/Graphics/SVG/</a></li>
+        <li><a href="http://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html">http://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial">https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial</a></li>
+        </ul>
+        <hr />
+        <ul>
+        <li>corbin@scatterbright.com</li>
+        <li><a href="http://scatterbright.com">http://scatterbright.com</a></li>
+        </ul>
+    </div>
+    <div id="overview" class="step slide" data-z="4000">
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="js/prettify.js"></script>
+<script type="text/javascript" src="js/impress.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+    function fetchSVG (url, elementId, noBody) {
+        return $.ajax(url, { dataType: "text" }).done(function(data) {
+            var result = data.trim();
+            if(noBody) {
+                var lines = result.split('\n');
+                result = '';
+                var regex = /^\s{0,4}|\r?$/g;
+                for(var i = 0; i < lines.length; i++) {
+                    if (lines[i].indexOf('<svg') < 0 && lines[i].indexOf('</svg') < 0) {
+                        result += lines[i].replace(regex,'') + '\n';
+                    }
+                }
+            }
+            $(elementId).text(result);               
+        }).fail(function() {
+            console.log("Call to " + url + " failed.");
+        });
+    }   
+    
+    var deferreds = [
+        fetchSVG("svg/circle.svg", "#svgCircle"),
+        fetchSVG("svg/lines.svg", "#svgLines"),
+        fetchSVG("svg/minnesota.svg", "#svgMN", true),
+        fetchSVG("svg/ellipse.svg", "#svgEllipse", true),
+        fetchSVG("svg/rectangles.svg", "#svgRects", true),
+        fetchSVG("svg/imageandtext.svg", "#svgImgText", true),
+        fetchSVG("svg/curve.svg", "#svgCurve", true),
+        fetchSVG("svg/translate.svg", "#svgTranslate", true),
+        fetchSVG("svg/rotate.svg", "#svgRotate", true),
+        fetchSVG("svg/scale.svg", "#svgScale", true),
+        fetchSVG("svg/group.svg", "#svgGroup", true)
+    ];
+
+    $.when.apply($, deferreds).done(function () {
+        prettyPrint();
+        impress().init();
+    });
+</script>
+</html>
+
+

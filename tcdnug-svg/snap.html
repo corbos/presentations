@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<title>Dynamically add elements</title>
+<meta charset="utf-8" />
+<link href="css/tcdnug.css" rel="stylesheet" />
+</style>
+</head>
+<body>
+<svg id="paper">
+</svg>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+(function(){
+    function randInt(val) {
+        return Math.floor(Math.random() * (val + 1));
+    };
+    var paper = Snap('#paper');
+    paper.click(function(event) {
+        paper.circle(event.x, event.y, 25)
+            .attr({
+                fill: Snap.rgb(randInt(255), randInt(255), randInt(255))
+            });
+    }); 
+})();
+</script>
+</body>
+</html>

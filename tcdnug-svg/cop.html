@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1024" />
+<title>Simple Machine Learning in Robocode</title>
+<link href="css/cop.css" rel="stylesheet" /> 
+</head>
+<body>
+<div id="impress">
+    <div id="start" class="step slide">
+        <h1>Simple Machine Learning</h1>
+        <span class="red">in Robocode</span>
+    </div>
+    <div id="whoami" class="step slide" data-x="500" data-z="-500" data-rotate-y="90">
+        <h3>Who Am I?</h3>
+        <ul>
+            <li>Tinkerer</li>
+            <li>Project Starter</li>
+            <li>Excited about computer science</li>
+        </ul>
+    </div>
+    <div id="whyqualified" class="step slide" data-z="-1000" data-rotate-y="180">
+        <h1>Why am I qualified to present this CoP?</h1>
+    </div>
+    <div id="whyimportant" class="step slide" data-x="-500" data-z="-500" data-rotate-y="270">
+        <h1>Why Is the Topic Important?</h1>
+    </div>
+
+    <div id="knuth" class="step" data-y="-1000">
+        <img id="imgKnuth" src="images/knuth.jpg">
+    </div>
+    <div id="robocode" class="step slide" data-x="500" data-y="-1000" data-z="-500" data-rotate-y="90">
+        <h1>Introduction to Robocode</h1>
+    </div>
+    <div id="approach" class="step slide" data-y="-1000" data-z="-1000" data-rotate-y="180">
+        <h3>Our approach:</h3>
+        <ul>
+            <li>Assume the scanner is working perfectly.</li>
+            <li>Ignore everything but the gun.</li>
+            <li>Shoot at a target that doesn't shoot back.</li>
+            <li>Start simple and build up.</li>
+        </ul>
+    </div>
+    <div id="georgerobot" class="step slide" data-x="-500" data-y="-1000" data-z="-500" data-rotate-y="270">
+        <img id="imggeorgerobot" src="images/georgerobot.jpg"> 
+    </div>
+    <div id="ml" class="step slide" data-x="-500" data-y="-1000" data-z="-500" data-rotate-y="270">
+        The core of machine learning deals with representation and generalization.
+        <div class="cite">- from Wikipedia</div>
+    </div>
+
+    <!-- flipped -->
+    <div id="feature" class="step slide" data-y="1000" data-rotate-z="180">
+        <h3>Representation: Features</h3>
+        <table>
+            <tr>
+                <td>
+                    <span class="red">Given</span>
+                    <ul>
+                        <li>Velocity</li>
+                        <li>Distance</li>
+                        <li>Heading</li>
+                        <li>Energy</li>
+                    </ul>
+                </td>
+                <td style="padding-left:50px;">
+                    <span class="red">Computed</span>
+                    <ul>
+                        <li>Acceleration</li>
+                        <li>Lateral Velocity</li>
+                        <li>Distance to Wall</li>
+                        <li>Gun/Movement Effectiveness</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="spm" class="step slide" data-x="-500" data-y="1000" data-z="-500" data-rotate-y="-90" data-rotate-z="180">
+        <h3>Symbolic Pattern Matching</h3>
+        <ol>
+            <li>Create a symbol from the current features.</li>
+            <li>Add the current symbol to a stored sequence.</li>
+            <li>Search the sequence for the current symbol.</li>
+            <li>If found, move to the symbol adjacent to the matched symbol and check for another match.</li>
+            <li>Record the longest match. This is most like the current sequence and may lead to a similar outcome.</li>
+        </ol>
+    </div>
+    <div id="symbol" class="step slide" data-y="1000" data-z="-1000" data-rotate-y="-180" data-rotate-z="180">
+        <h3>Why Symbols?</h3>
+        <ul>
+            <li>Discrete value</li>
+            <li>Limited alphabet</li>
+            <li>Existing algorithms</li>
+        </ul>
+    </div>
+    <div id="whysymbol" class="step slide" data-x="500" data-y="1000" data-z="-500" data-rotate-y="-270" data-rotate-z="180">
+        How to make a symbol
+        <img id="imgSymbol" src="images/symbol.png"> 
+    </div>
+
+    <div id="movie" class="step slide" data-x="1300">
+        <img src="images/movie.png" style="width:800px;">
+    </div>
+    <div id="spmadvantages" class="step slide" data-x="1800" data-z="-500" data-rotate-y="90">
+        <h3>Symbolic Pattern Matching</h3>
+        <span class="red">Advantages</span>
+        <ul>
+            <li>Fairly straightforward</li>
+            <li>No math</li>
+            <li>Existing algorithms, especially from string processing</li>
+            <li>Long match implies strong prediction</li>
+        </ul>
+    </div> 
+    <div id="spmdisadvantages" class="step slide" data-x="1300" data-z="-1000" data-rotate-y="180">
+        <h3>Symbolic Pattern Matching</h3>
+        <span class="red">Disadvantages</span>
+        <ul>
+            <li>Space and Time as <span class="n">n</span> grows</li>
+            <li>Doesn't exactly generalize</li>
+            <li>Small alphabet means coarse measurement</li>
+            <li>Relatively slow learning</li>
+        </ul>
+    </div>
+    <div id="clusteringintro" class="step slide" data-x="800" data-z="-500" data-rotate-y="270">
+        <h3>Clustering / Nearest Neighbor Search</h3>
+        <ol>
+            <li>Search for <span class="n">k</span> observations most similar to the current observation.</li>
+            <li>Determine the most likely outcome from the matched observations.</li>
+            <li>When the outcome is known, store it.</li>
+        </ol>
+    </div>
+
+    <div id="2dcluster" class="step slide" data-x="-1300" data-y="-1000" data-rotate-z="180">
+        <img src="images/2dcluster.png">
+    </div>
+    <div id="3dcluster" class="step slide" data-x="-1800" data-y="-1000" data-z="-500" data-rotate-y="-90" data-rotate-z="180">
+        <img src="images/3dcluster.png">
+    </div>
+    <div id="distance" class="step slide" data-x="-1300" data-y="-1000" data-z="-1000" data-rotate-y="-180" data-rotate-z="180">
+        <h3>Distance</h3>
+        <ul>
+            <li>Euclidean - what you expect</li>
+            <li>Manhattan - city block</li>
+            <li>Chebyshev - most significant dimension</li>
+            <li>Mahalanobis - normalized covariance matrix?</li>
+            <li>Minkowski - combo</li>
+        </ul>
+    </div>
+    <div id="determineoutcome" class="step slide" data-x="-800" data-y="-1000" data-z="-500" data-rotate-y="-270" data-rotate-z="180">
+        How do we determine the <span class="red">most likely</span> outcome?
+        <ul>
+            <li>Mode</li>
+            <li>Mean</li>
+            <li>Median</li>
+            <li>Something else?</li>
+        </ul>
+    </div> 
+
+    <div id="kerneldensity" class="step slide" data-x="-1300" data-y="1000">
+        <h3>Kernel Density Estimation</h3>
+        <img src="images/kerneldensity.png">
+    </div>
+    <div id="clusteradvantages" class="step slide" data-x="-800" data-y="1000" data-z="-500" data-rotate-y="90">
+        <h3>Clustering</h3>
+        <span class="red">Advantages</span>
+        <ul>
+            <li>Clear</li>
+            <li>Very effective (in my experience)</li>
+            <li>Fast learning</li>
+            <li>Good generalization</li>
+        </ul>
+    </div>
+    <div id="clusterdisadvantages" class="step slide" data-x="-1300" data-y="1000" data-z="-1000" data-rotate-y="180">
+        <h3>Clustering</h3>
+        <span class="red">Disadvantages</span>
+        <ul>
+            <li>Space and time as <span class="n">n</span> grows</li>
+            <li>May over-generalize with large samples or when behavior changes often.(temporal sensitivity)</li>
+        </ul>
+    </div> 
+    <div id="ann" class="step slide" data-x="-1800" data-y="1000" data-z="-500" data-rotate-y="270">
+        <h3>Artificial Neural Networks</h3>
+        <ol>
+            <li>Feed features into the impenetrable network.</li>
+            <li>Receive a projected outcome and hope it's correct.</li>
+            <li>When the outcome is known, adjust the network.</li>
+        </ol>
+    </div> 
+
+    <div id="annmodel" class="step slide" data-x="1300" data-y="-1000" data-rotate-z="180">
+        <img src="images/ann.png" style="padding:35px;width:800px;background-color:#FFF;">
+    </div>
+    <div id="costfunction" class="step slide" data-x="800" data-y="-1000" data-z="-500" data-rotate-y="-90" data-rotate-z="180">
+        Cost function - usually sigmoid: <pre>(2 / (1 + Math.exp(-2 * x))) - 1;</pre>
+        <img src="images/costfunction.png" style="background-color:#FFF;width:600px;">
+    </div>
+    <div id="backpropagation" class="step slide" data-x="1300" data-y="-1000" data-z="-1000" data-rotate-y="-180" data-rotate-z="180">
+        <h1>Backpropagation</h1>
+        Use the derivative of the cost function to adjust weights.
+    </div>
+    <div id="annadvantages" class="step slide" data-x="1800" data-y="-1000" data-z="-500" data-rotate-y="-270" data-rotate-z="180">
+        <h3>ANN</h3>
+        <span class="red">Advantages</span>
+        <ul>
+            <li>Small representation that doesn't grow</li>
+            <li>Good generalization</li>
+            <li>Fast learning with enough tweaks</li>
+        </ul>
+    </div>
+
+    <div id="anndisadvantages" class="step slide" data-x="-1300">
+        <h3>ANN</h3>
+        <span class="red">Disadvantages</span>
+        <ul>
+            <li>Impenetrable</li>
+            <li>Temperamental</li>
+            <li>Over fitting</li>
+            <li>Local minima</li>
+        </ul>
+    </div>
+    <div id="otherapproaches" class="step slide" data-x="-800" data-z="-500" data-rotate-y="90">
+        <h3>Other approaches</h3>
+        <ul>
+            <li>Multivariant Regression</li>
+            <li>Genetic Algorithms</li>
+            <li>Simulated Annealing</li>
+            <li>Bayesian Analysis</li>
+            <li>Markov Chains</li>
+            <li>Support Vector Machines</li>
+        </ul>
+    </div> 
+    <div id="improvements" class="step slide" data-x="-1300" data-z="-1000" data-rotate-y="180">
+        <h3>Improvements</h3>
+        <ul>
+            <li>Pattern Matching: Indexing</li>
+            <li>PM: Best density of several matches</li>
+            <li>Clustering: K-d Trees</li>
+            <li>Feature Saliency</li>
+        </ul>
+    </div>
+    <div id="github" class="step slide" data-x="1300" data-y="1000">
+        <h4>Robocode</h4>
+        <a href="http://robocode.sourceforge.net/">http://robocode.sourceforge.net/</a>
+        <a href="http://robowiki.net/">http://robowiki.net/</a>
+        <h4>Presentation source</h4>
+        <a href="https://github.com/corbos/robocode">https://github.com/corbos/robocode</a>
+    </div>
+
+
+
+    <div id="overview" class="step slide" data-z="3000">
+    </div>
+</div>
+</body>
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+</html>
+

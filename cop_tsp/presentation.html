@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1024" />
+<title>The Travelling Salesman Problem</title>
+    <link href="css/cop.css" rel="stylesheet" /> 
+</head>
+<body>
+<div id="impress">
+    <div id="start" class="step slide">
+        <h1>The Travelling Salesman Problem and Me</h1>
+        <span class="red">love letters written in JavaScript</span>
+    </div>
+    <div id="goals" class="step slide" data-x="1000" data-z="-1000" data-rotate-y="45">
+        <h3>Goals</h3>
+        <ul>
+            <li>Understand the TSP</li>
+            <li>Gain an intuition about TSP algorithms</li>
+            <li>Think about effective JavaScript</li>
+            <li>Dare to tackle problems that are too hard for us</li>
+        </ul>
+    </div>
+    <div id="why" class="step slide" data-x="2000" data-z="-2000" data-rotate-y="90">
+        (That last point is especially important.)
+    </div>
+    <div id="theproblem" class="step slide" data-x="1000" data-z="-3000" data-rotate-y="135">
+        <h3>The Problem</h3>
+            <div>
+            <div style="float:right;width:400px;padding-top:50px;">
+                Mentioned in 1832 sales literature
+            </div>
+            <img style="float:left;" src="images/austria.jpg" alt="Austria" />
+        </div>
+    </div>
+    <div id="hamilton" class="step slide" data-z="-4000" data-rotate-y="180">
+        <h3>Making it mathematical</h3>
+        <img src="images/williamrowanhamilton.jpg" alt="William Rowan Hamilton" title="William Rowan Hamilton" />
+        <img src="images/thomaskirkman.jpg" alt="Thomas Kirkman" title="Reverand Thomas Kirkman" />
+        <img src="images/menger.jpg" alt="Karl Menger" title="Karl Menger" />
+    </div>
+    <div id="fullgraph" class="step slide" data-x="-1000" data-z="-3000" data-rotate-y="225">
+        <img src="images/ndgraph.png" />
+    </div>
+    <div id="graph" class="step slide" data-x="-2000" data-z="-2000" data-rotate-y="270">
+        <img src="images/graph.png" />
+    </div>
+    <div id="nphard" class="step slide" data-x="-1000" data-z="-1000" data-rotate-y="315">
+        <h3>Properties</h3>
+        <ul>
+            <li>NP-hard (as hard as the hardest NP problem)</li>
+            <li>Maps to other NP-hard problems: factoring primes, map coloring, scheduling...
+            <li>Worth a million bucks</li>
+            <li><em>Traveling salesperson...</em></li>
+        </ul>
+    </div>
+
+    <div id="whyjavascript" class="step slide" data-y="-1000">
+        <h1>Why JavaScript?</h1>
+    </div>
+    <div id="thewhys" class="step slide" data-x="1000" data-y="-1000" data-z="-1000" data-rotate-y="45">
+        <ul>
+            <li>Easy to visualize solutions</li>
+            <li>Immediate feedback (no compilation)</li>
+            <li>Works on any machine</li>
+            <li>Tools are free and increasingly sophisticated</li>
+            <li>Maybe I've been using it wrong...</li>
+        </ul>
+    </div>
+    <div id="draft" class="step slide" data-x="2000" data-y="-1000" data-z="-2000" data-rotate-y="90">
+        <img src="images/draft.png" />
+    </div>
+    <div id="thealgorithms" class="step slide" data-x="1000" data-y="-1000" data-z="-3000" data-rotate-y="135">
+        <h1>The Algorithms</h1>
+    </div>
+    <div id="random" class="step slide" data-z="-4000" data-y="-1000" data-rotate-y="180">
+        <h3>Random Solution</h3>
+        <img src="images/random.png" />
+        <ul>
+            <li>Pro: Good for other algorithms' starting points</li>
+            <li>Con: Never gonna be optimal</li>
+        </ul>
+    </div>
+    <div id="separateconcerns" class="step slide" data-x="-1000" data-y="-1000" data-z="-3000" data-rotate-y="225">
+        <h2 class="red">JavaScript Lesson #1:</h2>
+        Separate Concerns
+    </div>
+    <div id="iteraterandom" class="step slide" data-x="-2000" data-y="-1000" data-z="-2000" data-rotate-y="270">
+        <h3>Iterate Random Solutions</h3>
+        <ol>
+            <li>Generate a random solution</li>
+            <li>If it's better than the best, keep it.</li>
+            <li>Repeat</li>
+        </ol>
+    </div>
+    <div id="iteraterandomprocon" class="step slide" data-x="-1000" data-y="-1000" data-z="-1000" data-rotate-y="315">
+         <ul>
+            <li>Pro: Improves</li>
+            <li>Cons: As <span class="n">n</span> grows, you have a better chance of Kanye West admitting he's wrong
+            than you have finding an optimal solution.</li>
+        </ul>
+    </div>
+    <div id="kanye" class="step slide" data-x="-1000" data-y="-1000" data-z="-1000" data-rotate-y="315">
+        <img src="images/kanye.jpg" />
+    </div>
+
+    <div id="loop" class="step slide" data-y="1000">
+        <h2 class="red">JavaScript Lesson #2:</h2>
+        Infinite loops take a little thinking.
+    </div>
+    <div id="bruteforce" class="step slide" data-x="1000" data-y="1000" data-z="-1000" data-rotate-y="45">
+        <h3>Brute Force (depth first search)</h3>
+        <img src="images/dps.png" />
+    </div>
+    <div id="bruteforceprocon" class="step slide" data-x="2000" data-y="1000" data-z="-2000" data-rotate-y="90">
+        <ul>
+            <li>Pro: Given &#8734; time, always provides an optimal solution</li>
+            <li>Con: <span class="n">O(n!)</span></li>
+        </ul>
+    </div>
+    <div id="onbang" class="step slide" data-x="1000" data-y="1000" data-z="-3000" data-rotate-y="135">
+        <span class="n">O(n!)</span> (Can see why it's NP-hard.)
+        <ul>
+            <li><span class="n">n</span> is 3 = 6</li>
+            <li><span class="n">n</span> is 7 = 5040</li>
+            <li><span class="n">n</span> is 9 = 362,880</li>
+            <li><span class="n">n</span> is 11 = 39,916,800</li>
+            <li><span class="n">n</span> is 13 = 6,227,020,800</li>
+            <li><span class="n">n</span> is 75 = 2.48091408113954E109
+                <br />(&gt; atoms in the universe)
+            </li> 
+        </ul>
+    </div>
+    <div id="branchandbound" class="step slide" data-z="-4000" data-y="1000" data-rotate-y="180">
+        <h3>Branch and Bound</h3>
+        <img src="images/branchandbound.jpg" />
+    </div>
+    <div id="constrain" class="step slide" data-x="-1000" data-y="1000" data-z="-3000" data-rotate-y="225">
+        <h3>Constrain the possibilities</h3>
+        <ul>
+            <li>Visit closest nodes first.</li>
+            <li>Stop searching (prune the tree) when there's no way to beat the best.
+            <br />(minimum possible subtree)
+            </li>
+            <li>There are other, more exotic, methods as well. (mixed integer programming)</li>
+        </ul>
+    </div>
+    <div id="branchandboundprocon" class="step slide" data-x="-2000" data-y="1000" data-z="-2000" data-rotate-y="270">
+        <ul>
+            <li>Pro: Provides an optimal solution if it has time.</li>
+            <li>Pro: can be <span class="n">O(2<sup>n</sup>)</span></li>
+            <li>Con: can be <span class="n">O(2<sup>n</sup>)</span></li>
+        </ul>
+    </div>
+    <div id="declarative" class="step slide" data-x="-1000" data-y="1000" data-z="-1000" data-rotate-y="315">
+        <h2 class="red">JavaScript Lesson #3:</h2>
+        Favor declarative styles.
+    </div>
+
+    <div id="dynamicprogramming" class="step slide" data-y="-2000">
+        <h3>Dynamic Programming</h3>
+        <img src="images/bellman.jpg" alt="Richard E. Bellman" title="Richard E. Bellman" />
+        <div style="float:right;padding-top:50px;width:600px;">
+            Solve overlapping subproblems.
+        </div>
+    </div>
+    <div id="sequences" class="step slide" data-x="1000" data-y="-2000" data-z="-1000" data-rotate-y="45">
+        <h3>Possible solutions</h3>
+        <img src="images/dynamic1.png" />
+    </div>
+    <div id="repeats" class="step slide" data-x="2000" data-y="-2000" data-z="-2000" data-rotate-y="90">
+        <h3>Observation: repeating sequences</h3>
+        <img src="images/dynamic2.png" />
+    </div>
+    <div id="dynamicproperties" class="step slide" data-x="1000" data-y="-2000" data-z="-3000" data-rotate-y="135">
+        <ul>
+            <li>Pro: <span class="n">O(n<sup>2</sup>2<sup>n</sup>)</span></li>
+            <li>Con: Space requirements explode</li>
+            <li>So: Isn't as helpful as you might think.</li>
+        </ul>
+    </div>
+    <div id="xkcd" class="step slide" data-z="-4000" data-y="-2000" data-rotate-y="180">
+        <img src="images/xkcd.png" />
+    </div>
+    <div id="this" class="step slide" data-x="-1000" data-y="-2000" data-z="-3000" data-rotate-y="225">
+        <h2 class="red">JavaScript Lesson #4:</h2>
+        Take time to understand <span class="n">this</span>
+    </div>
+    <div id="heuristics" class="step slide" data-x="-2000" data-y="-2000" data-z="-2000" data-rotate-y="270">
+        <h1>Heuristics</h1>
+        <span class="red">(when you don't have time for an optimal solution)</span>
+    </div>
+    <div id="nearestneighbor" class="step slide" data-x="-1000" data-y="-2000" data-z="-1000" data-rotate-y="315">
+        <h3>Example: Nearset Neighbor</h3>
+        <ol>
+            <li>Pick a random starting point.</li>
+            <li>Go to the nearest, unvisited node.</li>
+            <li>Repeat until you're back where you started.</li>
+        </ol>
+    </div>
+
+    <div id="nnprocon" class="step slide" data-y="2000">
+        <ul>
+            <li>Pro: Dead simple</li>
+            <li>Pro: Good as a sanity check for other heuristic algorithms
+            <li>Con: Not optimal</li>
+        </ul>
+    </div>
+    <div id="genetic" class="step slide" data-x="1000" data-y="2000" data-z="-1000" data-rotate-y="45">
+        <h3>Genetic Algorithm</h3>
+        <img src="images/dna.jpg" />
+    </div>
+    <div id="dna" class="step slide" data-x="2000" data-y="2000" data-z="-2000" data-rotate-y="90">
+        Our gene/DNA can simply be a valid tour. Examples:
+        <div>
+            1 -&gt; 5 -&gt; 4 -&gt; 0 -&gt; 6 -&gt; 3 -&gt; 2
+        </div>
+         <div>
+            3 -&gt; 4 -&gt; 5 -&gt; 0 -&gt; 1 -&gt; 2 -&gt; 6
+        </div>
+         <div>
+            3 -&gt; 2 -&gt; 0 -&gt; 5 -&gt; 4 -&gt; 6 -&gt; 1
+        </div>
+    </div>
+    <div id="population" class="step slide" data-x="1000" data-y="2000" data-z="-3000" data-rotate-y="135">
+        <h3>Procedure</h3>
+        <ul>
+            <li>Start with a population of valid genes.</li>
+            <li>Pick a subset of survivors, favoring the most fit.</li>
+            <li>Create a new generation by "breeding" the survivors.</li>
+            <li>Repeat forever.</li>
+        </ul>
+    </div>
+    <div id="crossover" class="step slide" data-z="-4000" data-y="2000" data-rotate-y="180">
+        <h3>Crossover</h3>
+        <div>
+            <div>Parent #1</div>
+            1 -&gt; 5 -&gt; <span style="border: 3px solid #8B0900;"> 4 -&gt; 0 -&gt; 6 </span> -&gt; 3 -&gt; 2
+        </div>
+         <div>
+            <div>Parent #2</div>
+            3 -&gt; 4 -&gt; <span style="border: 3px solid #8B0900;color:#8B0900;">&times;</span> 5 -&gt; 0 -&gt; 1 -&gt; 2 -&gt; 6
+        </div>
+        <div>Child</div>
+        <div>3 -&gt; 4 -&gt; 0 -&gt; 6 -&gt; 5 -&gt; 1 -&gt; 2</div>
+    </div>
+    <div id="mutation" class="step slide" data-x="-1000" data-y="2000" data-z="-3000" data-rotate-y="225">
+        <h3>Mutation</h3>
+        There is some probability that each node will "mutate" (move).
+        <div>Parent #1</div>
+        <div>1 -&gt; 5 -&gt; 4 -&gt; 0 -&gt; <span style="border: 3px solid #8B0900;">6</span> -&gt; 3 -&gt; 2</div>
+        <div>Child</div>
+        <div>1 -&gt; 6 -&gt; 5 -&gt; 4 -&gt; 0 -&gt; 3 -&gt; 2</div>
+    </div>
+    <div id="gaprocon" class="step slide" data-x="-2000" data-y="2000" data-z="-2000" data-rotate-y="270">
+        <ul>
+            <li>Pro: Super interesting</li>
+            <li>Pro: Intuitively sensible</li>
+            <li>Con: Many, many variables to tweak: 
+                <ul>
+                    <li>How do you represent the gene?</li>
+                    <li>How do you swap genetic material?</li>
+                    <li>How do you choose survivors?</li>
+                    <li>What are the various probabilities?</li>
+                </ul>
+                </li>
+            <li>Con: Gets stuck in local minima.</li>
+        </ul>
+    </div>
+    <div id="localminima" class="step slide" data-x="-1000" data-y="2000" data-z="-1000" data-rotate-y="315">
+        <h3>Digression: hill climbing, local minima</h3>
+        <img src="images/function.png" />
+    </div>
+
+    <div id="op" class="step slide" data-y="-3000">
+        <h2 class="red">JavaScript Lesson #5:</h2>
+        Don't use OOP when it doesn't make sense.
+    </div>
+    <div id="mooc" class="step slide" data-x="1000" data-y="-3000" data-z="-1000" data-rotate-y="45">
+        <h4>Shameless Plug: </h4>
+        <div>Discrete Optimization on coursera.org.</div>
+        <div class="red">by Pascal Van Hentenryck</div>
+        <img src="images/pascal.jpg" title="Pascal Van Hentenryck" />
+    </div>
+    <div id="crossed" class="step slide" data-x="2000" data-y="-3000" data-z="-2000" data-rotate-y="90">
+        <h3>Intuition: crossed edges are bad</h3>
+        <img src="images/crossed.png" />
+    </div>
+    <div id="triangle" class="step slide" data-x="1000" data-y="-3000" data-z="-3000" data-rotate-y="135">
+        <h3>Why?</h3>       
+        <img src="images/triangles.png" />
+        <div style="float:right;width:650px;padding-top:55px;">
+            Think about triangles.
+        </div>
+    </div>
+    <div id="uncrossed" class="step slide" data-z="-4000" data-y="-3000" data-rotate-y="180">
+        <h3>Uncross and adjust direction of edges.</h3>
+        <img src="images/uncrossed.png" />
+    </div>
+    <div id="twoopt" class="step slide" data-x="-1000" data-y="-3000" data-z="-3000" data-rotate-y="225">
+        <h3>2-opt</h3>
+        <ul>
+            <li>Uncrosses crossed edges.</li>
+            <li>Actually, will swap edge endpoints anytime it results in an improvement.</li>
+        </ul>
+    </div>
+    <div id="twooptprocon" class="step slide" data-x="-2000" data-y="-3000" data-z="-2000" data-rotate-y="270">
+        <ul>
+            <li>Pro: Simple, Fast</li>
+            <li>Pro: Much better than nearest neighbor.</li>
+            <li>Con: Not optimal</li>
+        </ul>
+    </div>
+     <div id="righttools" class="step slide" data-x="-1000" data-y="-3000" data-z="-1000" data-rotate-y="315">
+        <h2 class="red">JavaScript Lesson #6:</h2>
+        <div>Use the right tools.</div>
+        <div>Browser tools, JSLint/Hint, Grunt.js...</div>
+        <div>MDN. No W3Schools or MSDN.</div>
+        <div><a href="http://caniuse.com">http://canisuse.com</a></div>
+    </div>
+    <div id="advanced" class="step slide" data-y="3000">
+        <h1>Advanced</h1>
+    </div>
+    <div id="threeopt" class="step slide" data-x="1000" data-y="3000" data-z="-1000" data-rotate-y="45">
+        <ul>
+            <li>3-opt</li>
+            <li>k-opt</li>
+            <li>Lin-Kernighan Heuristic</li>
+            <li>Linear programming</li>
+            <li>Branch and cut</li>
+        </ul>
+    </div>
+    <div id="overview" class="step slide" data-z="4000">
+    </div>
+</div>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+</html>
+

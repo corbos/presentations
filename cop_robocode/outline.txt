@@ -1,0 +1,33 @@
+Introduction
+Robocode
+    How to play
+    robowiki.net
+    Opportunities for machine learning
+Machine Learning
+    Online versus Offline
+    Features
+    Feature salience
+    Time series
+        - Segmentation
+    Function estimation
+Pattern Matching
+    Nearest neighbor
+    Symbolic matching
+    Play it foward
+    Indexed pattern matcher
+Linear Regression
+    Multivariate
+    Least squares
+    Gradient descent
+    (oh so slow)
+Partition state space / observations (Guess Factors)
+   Bins
+   Buffers
+   Smoothing
+Artificial Neural Networks
+Nearest Neighbor Clustering
+    Improvements:
+        Kernel Density
+        k-d Tree
+Markov Chain/Hidden Markov Model
+Pearson product-moment correlation coefficient

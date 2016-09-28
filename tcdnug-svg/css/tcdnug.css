@@ -1,0 +1,99 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    font-family: georgia, serif;
+}
+ul {
+    list-style: url(../images/bullet.png);
+}
+li {
+    margin-left: 50px;
+}
+h1 {
+    font-size: 72px;
+    border-bottom: 2px solid #8B0900;
+}
+h2 {
+    font-size: 72px;
+}
+h3 {
+    text-decoration: underline;
+}
+img {
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    border: 1px solid rgba(0, 0, 0, .3);
+
+}
+pre {
+    font-size:36px;
+}
+pre.prettyprint {
+    margin-bottom: 10px;
+}
+hr {
+    border-color: #000;
+}
+object {
+    width: 100%;
+}
+s {
+    color: #B8CC14;
+}
+.step:not(.active) {
+    opacity: 0.1;
+}
+.slide {
+    width: 1024px;
+    font-size: 48px;
+    line-height: 1.5;
+}
+.red {
+    color: #8B0900;
+}
+body.impress-on-overview .step {
+    opacity: 1;
+}
+#programmers {
+    background-image: url(/images/programmer.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:600px;
+}
+#programmers div {
+    position: absolute;
+    top: 60%;
+}
+#programmers h1 {
+    background-color:#fff;
+    width:1024px;
+}
+#paper {
+    width: 100%;
+    height: 500px;
+}
+#pathdetails {
+    font-size:36px;
+}
+#thatsit {
+    font-size:36px;
+}

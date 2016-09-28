@@ -1,0 +1,7 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <text x="25" y="100" font-size="48" fill="#8B0900">
+        Banana Bread
+    </text>
+    <image xlink:href="/images/egg.jpg" x="400" y="10" 
+        width="226" height="150" />
+</svg>

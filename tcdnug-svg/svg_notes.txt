@@ -1,0 +1,99 @@
+SVG
+=========
+
+Introduce myself
+Introduce the topic
+Vector versus Raster
+SVG is XML
+How do we add SVG to HTML?
+Browser support
+Shimming - Raphael and VML
+Coordinate system
+Primitives
+    Line
+    Circle
+    Ellipse
+    Rectangle
+    Path
+        Absolute
+        Relative
+        Bezier Curves
+        Cubic Bezier Curves
+    Image
+    Text
+Transforms
+    Translate
+    Rotate
+    Scale
+Grouping
+<use>
+Advanced Effects
+    Gradients
+    Patterns
+    Masking
+    Clipping
+    Filters: blurring, distortion
+SVG object are part of the DOM
+    CSS
+    Scripting
+SMIL 3.0 (Smile
+
+=Set Up===========================
+- Who am I?
+Brief intro: a couple slides with a high-level intuition.
+- How I rediscovered SVG: simple games in the browser
+- Current options: Flash, Silverlight, Java, <canvas>, SVG
+- Eliminate possibilities. Flash, Silverlight, and Java require an install.
+  They also require their own toolsets.
+<canvas> versus SVG
+- Raster versus vector. Discussion: raster is pixels. If
+  you scale up, you get big pixels, not big shapes. Vector is shapes. Both
+  have their purpose. Vector stinks for photo-quality rendering. Raster isn't 
+  great for scaling primitives.
+- SVG objects are members of the DOM. This means they can
+  respond to events and are easy to manipulate with script.
+- Also easy to manipulate with CSS
+- Browser support. Both are W3C specs. SVG is a W3C Recommendation while <canvas> is 
+  a Candidate Recommendation. Neither is supported in IE 8 or earlier. SVG has the 
+  advantage of back-fill libraries like Raphael (VML)
+Disadvantages
+- Full spec support is still spotty. This is easied by SVG libraries.
+- Peformance degrades as you add objects to the DOM. Only a concern for fancy games. 
+  <canvas> doesn't share this problem because pixels are pixels.
+=Spec=============================================
+So what can SVG do?
+- Coordinate system
+- Basic shapes
+- Text and Image
+- Path
+Tranformations
+- Translate
+- Rotate
+- Scale
+Make your life easier
+- Group
+- <use>
+Advanced visual behaviors
+- Gradient
+- Masking/Clipping
+- Filters
+Animations
+- SMIL (we've lost IE)
+=Snap.svg===============================================
+- Are we not programmers? Let's program. 
+- Snap.svg: jQuery for SVG. There are many options. Why Snap?
+- Dynamically add objects
+- Group
+- Events: hover
+- Drag
+
+Links:
+===========
+http://caniuse.com/#feat=svg-html5
+http://caniuse.com/#feat=svg-smil
+http://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html
+http://www.w3.org/TR/SMIL/ --animations
+http://www.w3.org/TR/SVG11/styling.html --CSS in SVG
+http://solutiondesign.com/reconsidering-svg/
+http://www.w3.org/TR/SVG/paths.html --details about paths
+https://en.wikipedia.org/wiki/W3C_recommendation#Specification_Maturation

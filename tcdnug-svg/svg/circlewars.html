@@ -1,0 +1,305 @@
+<html>
+<head>
+<title>Sleestack</title>
+<link href="/css/tcdnug.css" rel="stylesheet" />
+<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/raphael-min.js"></script>
+<script type="text/javascript">
+var DEG_1 = Math.PI / 180;
+var DEG_10 = Math.PI / 18;
+var DEG_360 = Math.PI * 2;
+
+var MAX_SPEED = 3.0;
+var BULLET_SPEED = 10.0;
+var BOARD_WIDTH = 600.0;
+var HALF_BOARD_WIDTH = BOARD_WIDTH / 2;
+var CIRCLE_RADIUS = 275.0;
+var PLAYER_RADIUS = 10.0;
+var CRASH_DIST = Math.asin(PLAYER_RADIUS / CIRCLE_RADIUS) * 2;
+var NEAR_CRASH_DIST = CRASH_DIST + (DEG_1 * MAX_SPEED * 2);
+
+function sign(val){
+    if(val < 0.0)
+        return -1.0;
+    return 1.0;
+}
+
+function Player(raphael, angle, model){ 
+    this.x = 0;
+    this.y = 0;
+    this.angle = 0;
+    this.increment = 0.0;
+    this.speed = 0.0;
+    this.setAngle(angle);
+    this.sprite = raphael.circle(0, 0, PLAYER_RADIUS);
+    this.sprite.attr({fill:model.color});   
+    this.model = model;  
+    this.render();
+}
+
+Player.prototype = {
+    render:function(){       
+        this.sprite.attr({
+            cx:this.x, 
+            cy:this.y
+        });       
+    },
+    setSpeed:function(){
+        var s = sign(this.model.speed) / 3;
+        this.speed += s;       
+        this.speed = s < 0  ? Math.max(-MAX_SPEED, this.model.speed, this.speed)
+            : Math.min(MAX_SPEED, this.model.speed, this.speed);           
+        this.increment = this.speed * DEG_1;
+    },
+    move:function(){   
+        this.setAngle(this.angle + this.increment);              
+    },
+    setAngle:function(angle){
+        this.angle = angle;
+        if(this.angle > DEG_360)
+            this.angle -= DEG_360;
+        else if(this.angle < 0)
+            this.angle += DEG_360; 
+        this.x = HALF_BOARD_WIDTH + Math.cos(this.angle) * CIRCLE_RADIUS; 
+        this.y = HALF_BOARD_WIDTH + Math.sin(this.angle) * CIRCLE_RADIUS;
+    }
+};
+
+function Crash(raphael, x, y){
+    this.c = raphael.circle(x,y,0);
+    this.c.attr({fill:'FF700A'});  
+    this.size = 0;
+    this.increment = 7;   
+}
+Crash.prototype = {
+    tick:function(){
+        if(this.size >= 28)
+            this.increment = -this.increment;
+        this.size += this.increment;
+        this.size = Math.max(this.size, 0);
+        this.c.attr({r:this.size});
+        return this.size == 0;
+    }
+};
+
+function Bullet(raphael, oX, oY, tX, tY){
+    this.sprite = raphael.circle(oX,oY,2);
+    this.sprite.attr({fill:'FFFF00'});  
+    this.x = oX;
+    this.y = oY;
+    this.a = Math.atan2(tY - oY, tX - oX);
+}
+Bullet.prototype = {
+    tick:function(){
+        this.x = this.x + Math.cos(this.a) * BULLET_SPEED;
+        this.y = this.y + Math.sin(this.a) * BULLET_SPEED;
+        return this.x < 0 || this.y < 0 || this.x > BOARD_WIDTH || this.y > BOARD_WIDTH;
+    },
+    render:function(){
+        this.sprite.attr({
+            cx:this.x, 
+            cy:this.y
+        });      
+    }
+};
+
+function Game(container, pl, p2, logfunc){  
+    this.raphael = Raphael(container, HALF_BOARD_WIDTH * 2, HALF_BOARD_WIDTH * 2);
+    this.raphael.circle(HALF_BOARD_WIDTH, HALF_BOARD_WIDTH, CIRCLE_RADIUS);
+    this.player1 = new Player(this.raphael, Math.PI, pl);  
+    this.player2 = new Player(this.raphael, 0, p2);  
+    this.log = logfunc;
+}
+
+Game.prototype = {   
+    shotClock:0,
+    lastDelta: Math.PI,
+    crashes:[],
+    bullets:[],
+    run: function(){   
+        var self = this;
+        setInterval(function(){ self.tick(); }, 33);       
+    },
+    tick:function(){
+    
+        this.player1.setSpeed();
+        this.player2.setSpeed();
+        
+        // move the players accounting for collisions
+        if(Math.abs(this.lastDelta) < NEAR_CRASH_DIST){            
+             var p1i = this.player1.increment / 10.0;
+             var p2i = this.player2.increment / 10.0;
+             var p1a = this.player1.angle;
+             var p2a = this.player2.angle;
+             var d = 0.0;
+             var crash = false;
+             for(var i = 0; i < 10 && !crash; i++){
+                p1a += p1i;
+                p2a += p2i;
+                d = Math.abs(this.getDelta(p1a, p2a));
+                if(d <= CRASH_DIST)
+                    crash = true;               
+             }
+             
+             if(crash){  
+                var crashAng = p1a < p2a ? p1a + d / 2
+                    : p1a - d / 2;               
+                     
+                this.crash(
+                    HALF_BOARD_WIDTH + Math.cos(crashAng) * CIRCLE_RADIUS,
+                    HALF_BOARD_WIDTH + Math.sin(crashAng) * CIRCLE_RADIUS
+                    );
+                    
+                while(Math.abs(this.getDelta(p1a, p2a)) <= CRASH_DIST){
+                    p1a -= p1i;
+                    p2a -= p2i;
+                }
+                
+                this.player1.setAngle(p1a);
+                this.player2.setAngle(p2a); 
+                
+                this.setSpeedAfterCrash();
+               
+             }
+             else {
+                this.player1.move();
+                this.player2.move();   
+             }
+        }
+        else{           
+            this.player1.move();
+            this.player2.move();   
+        }   
+      
+        this.lastDelta = this.getDelta(this.player1.angle, this.player2.angle);
+
+        for(var i = this.bullets.length - 1; i >= 0;i--){
+            if(this.bullets[i].tick()){
+                this.bullets[i].sprite.remove();
+                this.bullets.splice(i,1);
+            }
+        }
+        
+        log(this.bullets.length);
+
+        this.player1.model.tick();
+        this.player2.model.tick();   
+
+        if(this.shotClock == 0){
+            this.bullet(
+                this.player1.x, 
+                this.player1.y,
+                this.player2.x, 
+                this.player2.y
+            );
+            
+             this.bullet(
+                this.player2.x, 
+                this.player2.y,  
+                this.player1.x, 
+                this.player1.y                     
+            );
+            this.shotClock = 15;
+        }
+        this.shotClock--;
+        
+        this.render();
+    },
+    render:function(){
+        this.player1.render();    
+        this.player2.render();
+        
+        var remove = false;       
+        for(var i = 0; i < this.crashes.length;i++){
+            if(this.crashes[i].tick()){
+                this.crashes[i].c.remove();
+                remove = true;
+            }
+        }
+        if(remove)
+            this.crashes.shift();
+            
+        for(var i = 0; i < this.bullets.length;i++){
+            this.bullets[i].render();
+        }
+    },
+    getDelta:function(a1,a2){           
+        var delta = a1 - a2;        
+        if(delta > Math.PI)
+            delta -= DEG_360;
+        else if(delta < -Math.PI)
+            delta += DEG_360;
+        return delta;
+    },
+    crash:function(x,y){
+        this.crashes.push(new Crash(this.raphael,x,y));
+    },
+    bullet:function(oX, oY, tX, tY){
+        this.bullets.push(new Bullet(this.raphael, oX, oY, tX, tY));
+    },
+    setSpeedAfterCrash:function(){
+        if(sign(this.player1.speed) != sign(this.player2.speed)){
+            this.player1.speed = -this.player1.speed;
+            this.player1.increment = -this.player1.increment;
+            this.player2.speed = -this.player2.speed            
+            this.player2.increment = -this.player2.increment;   
+        }
+        else if(Math.abs(this.player1.speed) > Math.abs(this.player2.speed)){
+            this.player1.speed = -this.player1.speed / 2;
+            this.player1.increment = -this.player1.increment / 2;
+        }
+        else{
+            this.player2.speed = -this.player2.speed / 2;
+            this.player2.increment = -this.player2.increment / 2;
+        }
+    }
+};
+
+//user-defined behaviors
+var p1 = {   
+    speed:-3.0,
+    count:0,
+    limit:50,
+    color:'#ff0000',
+    tick:function(){      
+        this.count++;   
+        if(this.count > this.limit){
+            this.limit = Math.random() * 100 + 50;
+            this.speed = -1 * this.speed;
+            this.count = 0;
+        }      
+    }
+};
+var p2 = {   
+    speed:1.0,
+    count:0,
+    limit:50,
+    color:'#0000ff',
+    tick:function(){
+        this.count++;    
+        if(this.count > this.limit){
+            this.limit = Math.random() * 100;
+            this.speed = Math.random() * 3 * sign(this.speed) * -1;
+            this.count = 0;
+        }     
+    }
+};
+
+var spn;
+function log(message){
+    spn.text(message);
+}
+
+$(document).ready(function(){ 
+    spn = $('#spn');
+	var g = new Game('scratch', p1, p2, log);
+    g.run(); 
+ });
+</script>
+</head>
+<body>
+<div id="scratch" style="width:600px;height:600px;background-color:#ffffff;">
+</div>
+<span id="spn"></span>
+</body>
+</html>

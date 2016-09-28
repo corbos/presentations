@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<title>Patterns</title>
+<meta charset="utf-8" />
+<link href="/css/theme.css" rel="stylesheet" />
+</style>
+</head>
+<body>
+<svg id="paper">
+</svg>
+<script type="text/javascript" src="/js/snap.svg-min.js"></script>
+<script type="text/javascript">
+(function(){
+    var paper = Snap('#paper');
+
+    var stripes = paper.path("M10-5-10,15M15,0,0,15M0-5-20,15")
+        .attr({
+            fill: "none",
+            stroke: "#bada55",
+            strokeWidth: 5
+        })
+        .pattern(0, 0, 10, 10);
+
+    var c1 = paper.circle(200, 200, 100).attr({fill: stripes});
+
+    var polkadots = paper.circle(10,10,5).attr({fill:"#FF0000"})
+        .pattern(0,0,15,15);
+
+    var c2 = paper.circle(400, 200, 100).attr({fill: polkadots});
+
+    var c1IsBig = true;
+    c1.click(function() {
+        if(c1IsBig)
+            c1.animate({r:45},1000, mina.elastic);
+        else
+            c1.animate({r:100},1000, mina.bounce);
+        c1IsBig = !c1IsBig;
+    });
+})();
+</script>
+</body>
+</html>

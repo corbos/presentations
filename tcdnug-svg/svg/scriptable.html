@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg">
+    <circle id="c" cx="50" cy="100" r="50" fill="#f00"></circle> 
+</svg>
+<script type="text/javascript">
+(function() {
+    var left = true;
+    var circle = document.getElementById('c');
+    circle.addEventListener('click', function() {
+        if(left) {
+            circle.setAttribute('cx',250); 
+            circle.setAttribute('fill','#0f0');
+        }
+        else {
+            circle.setAttribute('cx',50);
+            circle.setAttribute('fill','#f00');
+        }
+        left = !left;
+    }, false);
+})();
+</script>
+</body>
+</html>
+

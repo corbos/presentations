@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<title>Existing SVG</title>
+<meta charset="utf-8" />
+<link href="/css/tcdnug.css" rel="stylesheet" />
+</style>
+</head>
+<body>
+<svg id="paper">
+</svg>
+<script type="text/javascript" src="/js/snap.svg-min.js"></script>
+<script type="text/javascript">
+(function(){
+ 
+    var addHover = function(elem) {
+        var fill;
+        elem.hover(
+            function() {
+                fill = elem.attr("fill");
+                elem.attr({fill:"#bada55"});
+            }, 
+            function () {
+                elem.attr({fill:fill});
+            }
+        );
+    };
+
+    var paper = Snap('#paper'); 
+    Snap.load("cow.svg", function(cow) {
+        
+        addHover(cow.select('#path4096'));
+        addHover(cow.select('#path4084')); 
+        addHover(cow.select('#path4086'));
+        addHover(cow.select('#path4088'));
+        
+        var tail = cow.select("#path4094");
+        tail.click(function() {
+            var bb = tail.getBBox();
+            Snap.animate(0, 360, function(val) {
+                tail.transform("rotate(" + val + "," + bb.cx + "," + bb.cy + ")");
+            }, 1000, mina.easeinout);
+        });
+
+        paper.append(cow);
+    });
+
+})();
+</script>
+</body>
+</html>
