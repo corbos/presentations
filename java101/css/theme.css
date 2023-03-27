@@ -1,0 +1,180 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    font-family: georgia, serif;
+}
+
+
+ul {
+    list-style: url(../images/bullet.png);
+}
+
+li {
+    margin-left: 50px;
+}
+
+h1 {
+    font-size: 72px;
+    border-bottom: 2px solid #8B0900;
+}
+
+h2 {
+    font-size: 72px;
+}
+
+h3 {
+    text-decoration: underline;
+}
+
+a {
+    color: #8B0900;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.img {
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    border: 1px solid rgba(0, 0, 0, .3);
+}
+
+.img100 {
+    width: 100%;
+}
+
+.overflow {
+    overflow: auto;
+}
+
+pre {
+    font-size: 1rem;
+    font-family: monospace;
+}
+
+code[class*=language-],
+pre[class*=language-] {
+    font-size: 1rem;
+}
+
+pre.prettyprint {
+    margin-bottom: 10px;
+}
+
+hr {
+    border-color: #000;
+}
+
+.step:not(.active) {
+    opacity: 0.1;
+}
+
+.slide {
+    width: 1024px;
+    font-size: 48px;
+    line-height: 1.5;
+}
+
+.red {
+    color: #8B0900;
+}
+
+body.impress-on-overview .step {
+    opacity: 1;
+}
+
+#implementations li {
+    font-size: 2rem;
+}
+
+#implementations h1 {
+    margin-bottom: 2.5rem;
+}

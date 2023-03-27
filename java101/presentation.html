@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <link rel="stylesheet" href="./css/theme.css">
+    <title>Java 101</title>
+</head>
+
+<body>
+    <div id="impress">
+
+        <div id="start" class="step slide">
+            <h1>Java 101</h1>
+            <p style="text-align: right;">
+                <span class="red">a love letter</span>
+            </p>
+        </div>
+
+        <div id="sun" class="step slide" style="text-align: center;" data-x="1000" data-z="-1000" data-rotate-y="45">
+            <h2>Released by Sun in 1995.</h2>
+            <span class="red" style="font-size: 2rem;">(around the same time as Ruby, Python, and JavaScript)</span>
+            <img src="./images/sun-logo.png" class="img100">
+        </div>
+
+        <div id="free" class="step slide" data-x="2000" data-z="-2000" data-rotate-y="90">
+            <p>Sun gave Java away for free.</p>
+            <hr>
+            <p>It couldn't figure out how to monetize it.</p>
+        </div>
+
+        <div id="gosling" class="step slide" style="display:flex;align-items: center;justify-content: center;"
+            data-x="1000" data-z="-3000" data-rotate-y="135">
+            <div style="margin-right: 75px;">
+                <h4>James Gosling</h4>
+                <hr>
+                <p>Originally called Oak w/ Mike Sheridan, and Patrick Naughton, 1991</p>
+            </div>
+            <img class="img" src="./images/jamesgosling.jpg" style="width: 50%;">
+        </div>
+
+        <div id="compiler-vs-interpreter" class="step slide" data-z="-4000" data-rotate-y="180">
+            <img class="img100" src="./images/compiler-vs-interpreter.png">
+        </div>
+
+        <div id="per-platform-compiler" class="step slide" data-x="-1000" data-z="-3000" data-rotate-y="225">
+            <img class="img100" src="./images/per-platform-compiler.png">
+        </div>
+
+        <div id="per-platform-runtime" class="step slide" data-x="-2000" data-z="-2000" data-rotate-y="270">
+            <img class="img100" src="./images/per-platform-runtime.png">
+            <p>Write once, run anywhere. (.NET)</p>
+        </div>
+
+        <div id="bytecode" class="step slide" style="display:flex;margin-left: -75px;" data-x="-1000" data-z="-1000"
+            data-rotate-y="315">
+            <div style="margin-right: 35px;">
+                <h5>Java</h5>
+                <pre><code class="language-java">public class App {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+}</code></pre>
+            </div>
+
+            <div>
+                <h5>Bytecode (with comments)</h5>
+                <pre><code class="language-sh"></code><span style="color: #07a;">// Initialize class</span>
+0: aload_0
+1: invokespecial #1  // Method java/lang/Object."&lt;init&gt;":()V
+4: return
+<span style="color: #07a;">// main method</span>
+0: getstatic     #2  // Field java/lang/System.out:Ljava/io/PrintStream;
+3: ldc           #3  // String Working
+5: invokevirtual #4  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+8: return
+                </code></pre>
+            </div>
+        </div>
+
+        <div id="ecosystem" class="step slide" data-y="-1000">
+            <img class="img100" src="./images/ecosystem.png">
+        </div>
+
+        <div id="tiobe" class="step slide" data-x="1000" data-y="-1000" data-z="-1000" data-rotate-y="45">
+            <h2>Rankings</h2>
+            <ol>
+                <li>Java is third in the <a href="https://www.tiobe.com/tiobe-index/" target="_blank">TIOBE index</a>
+                    after Python and
+                    C.</li>
+                <li><a href="https://pypl.github.io/PYPL.html" target="_blank">PyPL</a> ranks Java second after Python.
+                </li>
+                <li><a href="https://www.hackerrank.com/research/developer-skills/2023" target="_blank">HackerRank</a>
+                    ranks Java first
+                    based
+                    on language demand.</li>
+            </ol>
+        </div>
+
+        <div id="oracle" class="step slide" data-x="2000" data-y="-1000" data-z="-2000" data-rotate-y="90">
+            <h3>Oracle acquired Sun in 2009-2010.</h3>
+            <img class="img100" src="./images/oracle-logo.png">
+        </div>
+
+        <div id="license" class="step slide" data-x="1000" data-y="-1000" data-z="-3000" data-rotate-y="135">
+            <p>In 2019, Oracle announced that Java versions after 8 would require a license.</p>
+        </div>
+
+        <div id="implementations" class="step slide" data-z="-4000" data-y="-1000" data-rotate-y="180">
+            <h1>Many Implementations</h1>
+            <div style="display:flex;">
+                <ul>
+                    <li>Java V1 (1996)</li>
+                    <li>Visual J++ : Microsoft</li>
+                    <li>GNU Compiler for Java</li>
+                    <li>Kaffee</li>
+                    <li>SableVM</li>
+                </ul>
+                <ul style="margin-left: 25px;">
+                    <li>OpenJDK : Reference Implementation</li>
+                    <li>Java SE/EE: Oracle</li>
+                    <li>Dalvik (Android) : Google</li>
+                    <li>Corretto : Amazon</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="oracle-vs-google" class="step slide" data-x="-1000" data-y="-1000" data-z="-3000" data-rotate-y="225"
+            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div style="margin-bottom: 1.5rem;">
+                <img src="./images/oracle-vs-google.jpg">
+            </div>
+            <a href="https://en.wikipedia.org/wiki/Google_LLC_v._Oracle_America%2C_Inc." style="font-size: 1.5rem;"
+                target="_blank">
+                https://en.wikipedia.org/wiki/Google_LLC_v._Oracle_America%2C_Inc.</a>
+        </div>
+
+        <div id="paradigms" class="step slide" data-x="-2000" data-y="-1000" data-z="-2000" data-rotate-y="270">
+            <img class="img100" src="./images/paradigms.png">
+        </div>
+
+        <div id="multi-paradigm" class="step slide" data-x="-1000" data-y="-1000" data-z="-1000" data-rotate-y="315">
+            <h2 style="text-align: center;">Java is multi-paradigm.</h2>
+            <img src="./images/oop-procedural-functional.png">
+        </div>
+
+        <div id="features" class="step slide" data-y="1000">
+            <h4>Features</h4>
+            <hr>
+            <img class="img100" src="./images/features.png">
+        </div>
+
+        <div id="criticisms" class="step slide" data-x="1000" data-y="1000" data-z="-1000" data-rotate-y="45">
+            <h3>Criticisms</h3>
+            <ul>
+                <li>Slow (fixed after Java 1.3)</li>
+                <li>Verbose</li>
+                <li>Security (better after Java applets)</li>
+                <li>Generics</li>
+                <li>Noun-ness</li>
+            </ul>
+        </div>
+
+        <div id="verbose" class="step slide" data-x="2000" data-y="1000" data-z="-2000" data-rotate-y="90">
+            <div style="margin-right: 35px;">
+                <h5>Java</h5>
+                <pre><code class="language-java">public class App {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+}</code></pre>
+            </div>
+
+            <div>
+                <h5>Python</h5>
+                <pre><code class="language-python">print("Hello World!")</code></pre>
+            </div>
+        </div>
+
+        <div id="languages" class="step slide" data-x="1000" data-y="1000" data-z="-3000" data-rotate-y="135"
+            style="display: flex; flex-direction: column; align-items: center;">
+            <h3 style="margin-bottom: 2rem;">Languages that target the JVM</h3>
+            <ul>
+                <li>Kotlin</li>
+                <li>Groovy</li>
+                <li>Scala</li>
+                <li>Clojure</li>
+                <li>Processing</li>
+            </ul>
+        </div>
+
+        <div id="what" class="step slide" data-z="-4000" data-y="1000" data-rotate-y="180">
+            <h1>What is Java used for?</h1>
+        </div>
+
+        <div id="apis" class="step slide" data-x="-1000" data-y="1000" data-z="-3000" data-rotate-y="225">
+            <div style="display: flex;align-items: center;">
+                <h2 style="flex-grow: 5;">APIs, Services </h2>
+                <div>
+                    <a href="https://github.com/GoogleCloudPlatform/microservices-demo#architecture"
+                        style="font-size: 2rem;" target="_blank">services</a>
+                </div>
+            </div>
+            <hr>
+            <img class="img100" src="./images/apis.png">
+
+        </div>
+
+        <div id="android" class="step slide" data-x="-2000" data-y="1000" data-z="-2000" data-rotate-y="270">
+            <h2>Android</h2>
+            <hr>
+            <img class="img100" src="./images/android.png">
+        </div>
+
+        <div id="infrastructure" class="step slide" data-x="-1000" data-y="1000" data-z="-1000" data-rotate-y="315">
+            <h2>Infrastructure</h2>
+            <hr>
+            <div style="display: flex;justify-content: space-around;align-items: center;">
+                <img src="./images/apache-kafka.png">
+                <img src="./images/apache-tomcat.png">
+                <img src="./images/jenkins.png">
+            </div>
+        </div>
+
+        <div id="others" class="step slide" data-y="-2000" data-x="1000" data-z="-2000" data-rotate-y="90">
+            <h2>Others</h2>
+            <hr>
+            <div style="display: flex; justify-content: space-around;align-items: center;">
+                <img src="./images/intellij-logo.png" style="width: 50%;">
+                <img src="./images/minecraft.png" style="width: 300px;">
+            </div>
+        </div>
+
+        <div id="who" class="step slide" data-y="-2000" data-z="-4000" data-rotate-y="180">
+            <h1>Who's using Java?</h1>
+        </div>
+
+        <div id="companies-and-orgs" class="step slide" data-y="-2000" data-x="-1000" data-z="-3000"
+            data-rotate-y="225">
+            <h3>Companies and Orgs</h3>
+            <div style="display:flex;justify-content: space-around;">
+                <ul>
+                    <li>Twitter</li>
+                    <li>Netflix</li>
+                    <li>Amazon</li>
+                    <li>Etsy</li>
+                </ul>
+                <ul>
+                    <li>Paypal</li>
+                    <li>Apache Foundation</li>
+                    <li>Google</li>
+                    <li>Github</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="future" class="step slide" data-y="-2000" data-x="-1000" data-z="-2000" data-rotate-y="270">
+            Oracle is accelerating Java development.
+            <hr>
+            <p>There were only 8 versions from 1995 to 2014. In 2023,
+                we're already up to version 20!</p>
+        </div>
+
+        <div id="overview" class="step slide" data-z="4000">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="js/impress.js"></script>
+    <script>
+        impress().init();
+    </script>
+</body>
+
+</html>
